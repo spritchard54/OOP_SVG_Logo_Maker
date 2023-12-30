@@ -1,6 +1,7 @@
 const inquirer = require('inquirer')
 const { Triangle, Square, Circle } = require('./lib/shapes')
 const fs = require('fs')
+// Inquierer user prompts for generating shape. Stored as a variable and called in userQuestions function.
 const questions = [
   {
     type: 'input',
@@ -28,11 +29,10 @@ const questions = [
     default: ''
   }
 ]
-// const { error, clear } = require('console');
 
+// Use code from shapes.js, and user responses to determine the the type and color of shape and assign them to svgLogo variable.
 function createShape (_paramOne, answers) {
   let svgLogo
-
   if (answers.shapeType === 'Triangle') {
     const triangle = new Triangle(answers.whatColorShape, answers.shapeType)
     svgLogo = triangle.render()
@@ -44,21 +44,20 @@ function createShape (_paramOne, answers) {
     svgLogo = circle.render()
   }
 
+  // Create a new variable
   const logoDetails = {
-    version: '<svg version="1.1" width="300" height="200" xmlns="http://www.w3.org/2000/svg">',
-    shape: svgLogo,
-    textParams: `<text x="150" y="130" text-anchor="middle" font-size="40" fill="${answers.whatColorText}">`,
-    text: `${answers.userInitials}</text></g></svg>`
+    // Create new variabe properties using template literals inquirer responses
+    xmlVersion: '<svg version="1.1" width="300" height="200" xmlns="http://www.w3.org/2000/svg">',
+    typeOfShape: svgLogo,
+    fontDetails: `<text x="50%" y="65%" dominant-baseline="top" text-anchor="middle" font-size="40" fill="${answers.whatColorText}">`,
+    letters: `${answers.userInitials}</text></g></svg>`
   }
+  // Create a new variable and use template literals to concatenate properties from logoDetails
+  const finishedLogo = `${logoDetails.xmlVersion}${logoDetails.typeOfShape}${logoDetails.fontDetails}${logoDetails.letters}`
 
-  const finishedLogo = `${logoDetails.version}${logoDetails.shape}${logoDetails.textParams}${logoDetails.text}`
-
+  // use .writeFile funtion to create logo.svg using finishedLogo variable.
   fs.writeFile('logo.svg', finishedLogo, (err) => {
-    if (err) {
-      throw err
-    } else {
-      console.log('The logo has been created')
-    }
+    err ? console.log(err) : console.log('Generated logo.svg')
   })
 }
 
@@ -69,9 +68,10 @@ const userQuestions = () => {
       createShape('logo.svg', answers)
     })
 }
-
+// Function that calls inquirer and prompts users
 function init () {
   userQuestions()
 }
 
+// Initiate the application
 init()
