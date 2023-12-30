@@ -13,6 +13,7 @@
   "author": "Steve Pritchard",
   "license": "MIT",
   "dependencies": {
-    "inquirer": "^8.2.6"
+    "inquirer": "^8.2.6",
+    "standard": "^17.1.0"
   }
 }
