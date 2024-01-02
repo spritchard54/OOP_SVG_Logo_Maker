@@ -27,6 +27,8 @@ EDX bootcamp instructors.
 ## Tests
 shapes.test.js
 
+logoDetails.test.js
+
 ## License Link
 https://www.mit.edu/~amini/LICENSE.md
 

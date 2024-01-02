@@ -1,9 +1,6 @@
-//Is there a more efficient way to write this code?
-//For testing, using JEST, does it make more sense to have some of the code from index.js in the shapes.js file?
-
-
 const inquirer = require('inquirer')
 const { Triangle, Square, Circle } = require('./lib/shapes')
+const LogoDetails = require('./lib/logoDetails')
 const fs = require('fs')
 // Inquierer user prompts for generating shape. Stored as a variable and called in userQuestions function.
 const questions = [
@@ -47,17 +44,8 @@ function createShape (_paramOne, answers) {
     const circle = new Circle(answers.whatColorShape, answers.shapeType)
     svgLogo = circle.render()
   }
-
-  // Create a new variable
-  const logoDetails = {
-    // Create new variabe properties using template literals inquirer responses
-    xmlVersion: '<svg version="1.1" width="300" height="200" xmlns="http://www.w3.org/2000/svg">',
-    typeOfShape: svgLogo,
-    fontDetails: `<text x="50%" y="65%" dominant-baseline="top" text-anchor="middle" font-size="40" fill="${answers.whatColorText}">`,
-    letters: `${answers.userInitials}</text></g></svg>`
-  }
-  // Create a new variable and use template literals to concatenate properties from logoDetails
-  const finishedLogo = `${logoDetails.xmlVersion}${logoDetails.typeOfShape}${logoDetails.fontDetails}${logoDetails.letters}`
+const logoDetails = new LogoDetails (svgLogo, answers.whatColorText, answers.userInitials)
+const finishedLogo = logoDetails.render();
 
   // use .writeFile funtion to create logo.svg using finishedLogo variable.
   fs.writeFile('logo.svg', finishedLogo, (err) => {
