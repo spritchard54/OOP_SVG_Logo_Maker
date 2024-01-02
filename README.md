@@ -15,6 +15,9 @@
 ## Description
 This application can be used to create a simple SVG Logo using command line tools. Users are presented with four prompts and the answers are used to create the logo.
 
+## Walkthrough Video
+https://drive.google.com/file/d/15KnhWKeP1-b6in-aAVMjA_JZLtj8j26v/view?usp=sharing
+
 ## Installation
 Run "node index" from terminal.
     

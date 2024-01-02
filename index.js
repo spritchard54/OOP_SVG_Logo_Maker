@@ -32,7 +32,7 @@ const questions = [
 ]
 
 // Use code from shapes.js, and user responses to determine the the type and color of shape and assign them to svgLogo variable.
-function createShape (_paramOne, answers) {
+function createShape(_paramOne, answers) {
   let svgLogo
   if (answers.shapeType === 'Triangle') {
     const triangle = new Triangle(answers.whatColorShape, answers.shapeType)
@@ -44,8 +44,8 @@ function createShape (_paramOne, answers) {
     const circle = new Circle(answers.whatColorShape, answers.shapeType)
     svgLogo = circle.render()
   }
-const logoDetails = new LogoDetails (svgLogo, answers.whatColorText, answers.userInitials)
-const finishedLogo = logoDetails.render();
+  const logoDetails = new LogoDetails(svgLogo, answers.whatColorText, answers.userInitials)
+  const finishedLogo = logoDetails.render();
 
   // use .writeFile funtion to create logo.svg using finishedLogo variable.
   fs.writeFile('logo.svg', finishedLogo, (err) => {
@@ -62,7 +62,7 @@ const userQuestions = () => {
     })
 }
 // Function that calls inquirer and prompts users
-function init () {
+function init() {
   userQuestions()
 }
 
