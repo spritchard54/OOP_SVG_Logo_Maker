@@ -1,3 +1,7 @@
+//Is there a more efficient way to write this code?
+//For testing, using JEST, does it make more sense to have some of the code from index.js in the shapes.js file?
+
+
 const inquirer = require('inquirer')
 const { Triangle, Square, Circle } = require('./lib/shapes')
 const fs = require('fs')
@@ -61,6 +65,7 @@ function createShape (_paramOne, answers) {
   })
 }
 
+//Initiates questions, then outputs 'answers' to 'logo.svg'
 const userQuestions = () => {
   return inquirer
     .prompt(questions)

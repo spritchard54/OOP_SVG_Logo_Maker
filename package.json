@@ -8,12 +8,14 @@
     "lib": "lib"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "author": "Steve Pritchard",
   "license": "MIT",
   "dependencies": {
-    "inquirer": "^8.2.6",
-    "standard": "^17.1.0"
+    "inquirer": "^8.2.6"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
   }
 }
